@@ -22,7 +22,7 @@ A sophisticated Flask-based web application designed for enterprise-grade YouTub
   - Market insights
   - Strategic recommendations
   - Code snippet identification
-  
+
 ### Advanced Progress Tracking
 - **Real-time Monitoring:**
   - Phase-specific progress indicators
@@ -36,32 +36,28 @@ A sophisticated Flask-based web application designed for enterprise-grade YouTub
 
 ### Enterprise-Ready Features
 - **Rate Limiting:** Smart API request management
-- **Retry Mechanisms:** Robust error handling
-- **Scalable Architecture:** Designed for high-volume processing
+- **Retry Mechanisms:** Robust error handling (via backoff library)
 - **Export Flexibility:** Multiple output formats
 
 ## 🛠 Technical Architecture
 
 ### Backend Stack
-- **Framework:** Flask (Python 3.8+)
+- **Framework:** Flask
 - **AI Integration:** OpenAI GPT API
 - **YouTube Integration:** Official YouTube Data API v3
-- **Data Processing:** Pandas, NumPy
-- **Async Support:** Celery for background tasks
+- **Progress Tracking:** Rich CLI interface
+- **Error Handling:** Backoff retry mechanism
 
 ### Frontend Stack
 - **UI Framework:** Bootstrap 5
 - **JavaScript:** ES6+ with async/await
-- **Progress Tracking:** Custom WebSocket implementation
 - **Responsive Design:** Mobile-first approach
 
 ## 📋 Prerequisites
 
 - Python 3.8 or higher
-- Node.js 14+ (for frontend development)
 - YouTube Data API access
 - OpenAI API subscription
-- Redis (optional, for caching)
 
 ## 🚀 Quick Start
 
@@ -85,17 +81,9 @@ pip install -r requirements.txt
 Create `.env` file with required credentials:
 
 ```env
-FLASK_ENV=development
 FLASK_SECRET_KEY=your_secure_secret_key
 YOUTUBE_API_KEY=your_youtube_api_key
 OPENAI_API_KEY=your_openai_api_key
-REDIS_URL=redis://localhost:6379/0  # Optional
-```
-
-### 3. Database Initialization
-
-```bash
-flask db upgrade
 ```
 
 ## 🔧 Advanced Configuration
@@ -108,49 +96,16 @@ MAX_RETRIES = 3
 RETRY_DELAY = 5  # seconds
 ```
 
-### Caching Configuration
-```python
-CACHE_TYPE = 'redis'
-CACHE_REDIS_URL = 'redis://localhost:6379/0'
-CACHE_DEFAULT_TIMEOUT = 3600
-```
-
-## 🔍 Quality Assurance
-
-### Running Tests
-```bash
-# Unit tests
-pytest tests/unit
-
-# Integration tests
-pytest tests/integration
-
-# E2E tests
-pytest tests/e2e
-```
-
-### Code Quality
-```bash
-# Style checking
-flake8 .
-
-# Type checking
-mypy .
-```
-
-## 📈 Performance Optimization
+## 🔍 Performance Optimization
 
 - **Batch Processing:** Configurable batch sizes for optimal performance
 - **Memory Management:** Efficient handling of large transcripts
-- **Caching Strategy:** Multi-level caching for frequently accessed data
-- **Connection Pooling:** Database connection optimization
+- **Rate Limiting:** Smart API request management
 
 ## 🔐 Security Considerations
 
-- API key rotation mechanism
-- Rate limiting per user/IP
+- API key management via environment variables
 - Input sanitization
-- CORS configuration
 - XSS protection
 - CSRF protection
 
@@ -171,8 +126,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 1. Fork repository
 2. Create feature branch
 3. Implement changes
-4. Add tests
-5. Submit pull request
+4. Submit pull request
 
 ## 📄 License
 
@@ -188,9 +142,7 @@ Licensed under MIT License. See [LICENSE](LICENSE) for details.
 ## 📞 Support
 
 - GitHub Issues
-- Email Support: support@example.com
 - Documentation Wiki
-- Community Discord
 
 ---
 
